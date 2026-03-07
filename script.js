@@ -30,7 +30,12 @@ function render(gifts) {
       <strong>${g.name}</strong>
       ${g.link ? `<br><a href="${g.link}" target="_blank">🔗 Ссылка</a>` : ''}
       <div class="status">${isBooked ? '🔒 Занято' : '✅ Свободно'}</div>
-      ${!isBooked ? `<button onclick="book('${g.name.replace(/'/g, "\\'")}')">Забронировать</button>` : ''}
+      <div class="buttons">
+        ${!isBooked 
+          ? `<button class="btn-book" onclick="book('${g.name.replace(/'/g, "\\'")}')">Забронировать</button>` 
+          : `<button class="btn-unbook" onclick="unbook('${g.name.replace(/'/g, "\\'")}')">Разблокировать</button>`
+        }
+      </div>
     `;
     container.appendChild(div);
   });
@@ -40,23 +45,33 @@ async function book(name) {
   if(!confirm(`Забронировать "${name}"?`)) return;
   
   try {
-    // POST с JSON телом
-    const res = await fetch(API, {
+    await fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ name: name })
+      body: JSON.stringify({ name: name, action: 'book' })
     });
-    
-    const result = await res.json();
-    if (result.success) {
-      alert('✅ Забронировано!');
-      location.reload();
-    } else {
-      alert('❌ Ошибка: ' + (result.error || 'Неизвестно'));
-    }
+    alert('✅ Забронировано!');
+    location.reload();
   } catch(e) {
     console.error('Book error:', e);
-    // Даже если ошибка CORS - пробуем перезагрузить (запрос мог уйти)
+    alert('⚠️ Запрос отправлен. Проверьте таблицу!');
+    location.reload();
+  }
+}
+
+async function unbook(name) {
+  if(!confirm(`Разблокировать "${name}"?`)) return;
+  
+  try {
+    await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ name: name, action: 'unbook' })
+    });
+    alert('✅ Разблокировано!');
+    location.reload();
+  } catch(e) {
+    console.error('Unbook error:', e);
     alert('⚠️ Запрос отправлен. Проверьте таблицу!');
     location.reload();
   }
