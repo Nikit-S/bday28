@@ -201,28 +201,15 @@ body {
   margin: 0;
 }
 
-/* Gallery */
-.gallery {
-  margin-top: 24px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.gallery img {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-}
-
-/* Moodboard */
-.moodboard-grid {
+/* Resources Grid */
+.resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   margin: 24px 0;
 }
 
-.moodboard-card {
+.resource-card {
   background: var(--bg-secondary);
   border-radius: 12px;
   padding: 20px;
@@ -230,54 +217,93 @@ body {
   transition: transform 0.2s, border-color 0.2s;
 }
 
-.moodboard-card:hover {
+.resource-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent-gold);
 }
 
-.moodboard-card h4 {
+.resource-card h4 {
   font-size: 16px;
   margin-bottom: 8px;
   color: var(--accent-gold);
 }
 
-.moodboard-card p {
+.resource-card p {
   font-size: 14px;
   color: var(--text-muted);
   margin-bottom: 12px;
 }
 
-.moodboard-link {
+.resource-link {
   color: var(--accent-blue);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
 }
 
-.moodboard-link:hover {
+.resource-link:hover {
   text-decoration: underline;
 }
 
-.moodboard-gallery {
+/* Moodboard 6 Images Grid */
+.moodboard-grid-6 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-top: 24px;
+  margin: 24px 0;
 }
 
-.moodboard-gallery img {
+.moodboard-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.moodboard-item img {
   width: 100%;
-  aspect-ratio: 4/3;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  transition: transform 0.3s;
 }
 
-.gallery-caption {
+.moodboard-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Viking Invitation Text */
+.viking-invitation {
+  margin-top: 32px;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, rgba(201, 169, 98, 0.05) 0%, rgba(74, 111, 165, 0.05) 100%);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
   text-align: center;
+}
+
+.rune-divider {
+  font-size: 24px;
+  color: var(--accent-gold);
+  letter-spacing: 12px;
+  margin: 16px 0;
+  opacity: 0.7;
+}
+
+.viking-invitation h3 {
+  font-size: 22px;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+}
+
+.invitation-text {
+  font-size: 16px;
+  line-height: 1.8;
   color: var(--text-muted);
-  font-style: italic;
-  margin-top: 12px;
-  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.invitation-text strong {
+  color: var(--accent-gold);
 }
 
 /* Gifts Grid */
@@ -524,7 +550,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .moodboard-gallery {
+  .moodboard-grid-6 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -572,11 +598,20 @@ body {
     height: 300px;
   }
   
-  .moodboard-grid {
+  .resources-grid {
     grid-template-columns: 1fr;
   }
   
-  .moodboard-gallery {
+  .moodboard-grid-6 {
     grid-template-columns: 1fr;
+  }
+  
+  .viking-invitation {
+    padding: 24px 16px;
+  }
+  
+  .rune-divider {
+    letter-spacing: 8px;
+    font-size: 20px;
   }
 }
