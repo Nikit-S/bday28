@@ -1,23 +1,85 @@
-# 🎁 Gift Reservation
+# 🎉 День Рождения 28
 
-Сайт для резервирования подарков на День Рождения.
+Сайт-приглашение на День Рождения с системой бронирования подарков.
 
-##  Сайт
+## 🌐 Сайт
 
-https://nikit-s.github.io/bday28/
+**https://nikit-s.github.io/bday28/**
 
-## 📱 Особенности
+---
 
-- ✅ Тёмная тема
-- ✅ Адаптивный дизайн (мобильные + десктоп)
-- ✅ Google Sheets как база данных
-- ✅ Бронирование и разблокировка подарков
-- ✅ Кнопка Share
+## 📁 Структура проекта
 
-## 🔧 API
+```
+bday28/
+├── index.html          # Главная страница
+├── style.css           # Стили
+├── script.js           # Логика подарков
+├── images/             # Папка для изображений
+│   └── celebration.jpg # Фото праздника
+└── README.md           # Этот файл
+```
 
-Google Apps Script: `https://script.google.com/macros/s/AKfycby6v5faSAHapgJ5p74qB3jf88PeAxSvXr5AY-Jh5gxBKYkHgtntVYb-aal4UGwm4mky/exec`
+---
 
-## 📊 Данные в Google Sheets
+## 📝 Как редактировать контент
 
-Колонки: `name` | `link` | `img` | `booked`
+### 1. Текст праздника
+
+Откройте `index.html` и найдите секции:
+
+- **О празднике** (`#about`) — дата, время, место
+- **Подарки** (`#gifts`) — виджет бронирования (автоматически)
+- **Место** (`#location`) — карта и как добраться
+- **FAQ** (`#faq`) — ответы на вопросы
+- **Контакты** — ваши данные
+
+### 2. Изображения
+
+1. Создайте папку `images` в корне репозитория
+2. Загрузите туда фото (например, `celebration.jpg`)
+3. В `index.html` укажите путь: `<img src="images/your-photo.jpg">`
+
+### 3. Карта
+
+Замените `iframe` в секции `#location`:
+
+**Яндекс Карты:**
+1. Откройте https://yandex.ru/maps
+2. Найдите место → Поделиться → Виджет
+3. Скопируйте код iframe
+
+**Google Maps:**
+1. Откройте https://maps.google.com
+2. Найдите место → Поделиться → Встраивание карт
+3. Скопируйте код iframe
+
+### 4. Подарки (Google Sheets)
+
+Таблица должна иметь колонки:
+| name | link | img | booked |
+|------|------|-----|--------|
+| Яндекс станция | https://... | https://... | FALSE |
+
+API: `https://script.google.com/macros/s/AKfycby6v5faSAHapgJ5p74qB3jf88PeAxSvXr5AY-Jh5gxBKYkHgtntVYb-aal4UGwm4mky/exec`
+
+---
+
+## 📱 Адаптивность
+
+- 📱 Мобильный: 1 колонка
+- 📱 Планшет: 2 колонки
+- 💻 Десктоп: 3-4 колонки
+
+---
+
+## 🚀 Развёртывание
+
+1. Settings → Pages → Branch: `main`
+2. Сайт доступен через 1-2 минуты
+
+---
+
+## 📞 Контакты
+
+По вопросам: Telegram @yourusername

@@ -1,28 +1,33 @@
 const API = 'https://script.google.com/macros/s/AKfycby6v5faSAHapgJ5p74qB3jf88PeAxSvXr5AY-Jh5gxBKYkHgtntVYb-aal4UGwm4mky/exec';
 
+// Smooth scroll for nav links
+document.querySelectorAll('.nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Load gifts
 async function loadGifts() {
-  const container = document.getElementById('gifts');
+  const container = document.getElementById('gifts-container');
   try {
     const res = await fetch(API + '?t=' + Date.now());
     const gifts = await res.json();
-    render(gifts);
-    updateCount(gifts.length);
+    renderGifts(gifts);
   } catch(e) {
-    container.innerHTML = '<div class="error">❌ Ошибка загрузки</div>';
+    container.innerHTML = '<div class="loading">❌ Ошибка загрузки подарков</div>';
     console.error(e);
   }
 }
 
-function updateCount(count) {
-  document.getElementById('count').textContent = count;
-}
-
-function render(gifts) {
-  const container = document.getElementById('gifts');
+function renderGifts(gifts) {
+  const container = document.getElementById('gifts-container');
   container.innerHTML = '';
   
   if (!gifts || gifts.length === 0) {
-    container.innerHTML = '<div class="error">📭 Нет подарков</div>';
+    container.innerHTML = '<div class="loading">📭 Нет подарков в списке</div>';
     return;
   }
   
@@ -86,23 +91,6 @@ async function unbook(name) {
     location.reload();
   } catch(e) {
     alert('❌ Ошибка: ' + e.message);
-  }
-}
-
-function shareList() {
-  const url = window.location.href;
-  if (navigator.share) {
-    navigator.share({
-      title: 'Подарки на ДР',
-      text: 'Выбери подарок!',
-      url: url
-    }).catch(() => {
-      navigator.clipboard.writeText(url);
-      alert('Ссылка скопирована!');
-    });
-  } else {
-    navigator.clipboard.writeText(url);
-    alert('Ссылка скопирована!');
   }
 }
 
