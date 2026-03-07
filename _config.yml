@@ -1,0 +1,18 @@
+title: День Рождения 28
+description: Приглашение на праздник
+baseurl: "/bday28"
+url: "https://nikit-s.github.io"
+
+theme: null
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
