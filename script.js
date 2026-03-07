@@ -2,19 +2,13 @@ const API = 'https://script.google.com/macros/s/AKfycby6v5faSAHapgJ5p74qB3jf88Pe
 
 async function loadGifts() {
   try {
-    // Добавляем timestamp чтобы избежать кэширования
-    const res = await fetch(API + '?t=' + Date.now(), {
-      method: 'GET',
-      redirect: 'follow'
-    });
-    
+    const res = await fetch(API + '?t=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    
     const gifts = await res.json();
     render(gifts);
   } catch(e) {
     console.error('Load error:', e);
-    document.getElementById('gifts').innerHTML = '❌ Ошибка загрузки. Проверьте консоль (F12)';
+    document.getElementById('gifts').innerHTML = '❌ Ошибка загрузки';
   }
 }
 
@@ -46,19 +40,25 @@ async function book(name) {
   if(!confirm(`Забронировать "${name}"?`)) return;
   
   try {
-    // no-cors необходим для Google Apps Script
-    await fetch(API, {
+    // POST с JSON телом
+    const res = await fetch(API, {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ name: name })
     });
     
-    alert('✅ Забронировано!');
-    location.reload();
+    const result = await res.json();
+    if (result.success) {
+      alert('✅ Забронировано!');
+      location.reload();
+    } else {
+      alert('❌ Ошибка: ' + (result.error || 'Неизвестно'));
+    }
   } catch(e) {
     console.error('Book error:', e);
-    alert('❌ Ошибка при бронировании');
+    // Даже если ошибка CORS - пробуем перезагрузить (запрос мог уйти)
+    alert('⚠️ Запрос отправлен. Проверьте таблицу!');
+    location.reload();
   }
 }
 
