@@ -19,6 +19,7 @@ body {
   --accent-gold: #c9a962;
   --accent-blue: #4a6fa5;
   --accent-red: #8b2332;
+  --accent-green: #2d5016;
   --text-primary: #e0e0e0;
   --text-muted: #8e8e93;
   --border-color: #2a2a35;
@@ -306,6 +307,129 @@ body {
   color: var(--accent-gold);
 }
 
+/* Dictionary Section */
+.dictionary-category {
+  font-size: 20px;
+  color: var(--accent-gold);
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dictionary-category:first-child {
+  margin-top: 0;
+}
+
+.dictionary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dictionary-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.dictionary-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 4px 16px rgba(201, 169, 98, 0.1);
+}
+
+.word-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.word {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.pronunciation {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  background: var(--bg-card);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.word-meaning {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.word-origin {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.word-example {
+  font-size: 14px;
+  color: var(--accent-blue);
+  margin: 0;
+}
+
+/* Insult Cards - Special Style */
+.insult-card {
+  border-color: var(--accent-red);
+  background: linear-gradient(135deg, rgba(139, 35, 50, 0.1) 0%, var(--bg-secondary) 100%);
+}
+
+.insult-card:hover {
+  border-color: #ff6b6b;
+}
+
+/* Number Cards */
+.number-card {
+  text-align: center;
+}
+
+.number-card .word-header {
+  justify-content: center;
+}
+
+.number-card .word {
+  font-size: 24px;
+}
+
+.highlight-card {
+  border-color: var(--accent-gold);
+  background: linear-gradient(135deg, rgba(201, 169, 98, 0.15) 0%, var(--bg-secondary) 100%);
+}
+
+.dictionary-note {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-blue);
+}
+
+.dictionary-note p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
 /* Gifts Grid */
 .gifts-grid {
   display: grid;
@@ -553,6 +677,10 @@ body {
   .moodboard-grid-6 {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .dictionary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
@@ -613,5 +741,14 @@ body {
   .rune-divider {
     letter-spacing: 8px;
     font-size: 20px;
+  }
+  
+  .dictionary-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .word-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
