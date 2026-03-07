@@ -37,14 +37,31 @@ function renderGifts(gifts) {
   
   gifts.forEach(g => {
     const isBooked = String(g.booked).toUpperCase() === 'TRUE';
+    const hasLink = g.link && String(g.link).trim() !== '';
+    const hasDescription = g.description && String(g.description).trim() !== '';
+    
     const div = document.createElement('div');
     div.className = 'gift';
     
-    div.innerHTML = `
+    let html = `
       <img src="${g.img || 'https://via.placeholder.com/300'}" alt="${g.name}" class="gift-image" onerror="this.src='https://via.placeholder.com/300'">
       <div class="gift-content">
         <div class="gift-name">${g.name}</div>
-        ${g.link ? `<a href="${g.link}" target="_blank" class="gift-link">🔗 Ссылка</a>` : ''}
+    `;
+    
+    // Description (if exists)
+    if (hasDescription) {
+      html += `<p class="gift-description">${g.description}</p>`;
+    }
+    
+    // Link (if exists)
+    if (hasLink) {
+      html += `<a href="${g.link}" target="_blank" class="gift-link">🔗 Ссылка</a>`;
+    } else {
+      html += `<span class="gift-no-link">📦 Без ссылки</span>`;
+    }
+    
+    html += `
         <div class="gift-status ${isBooked ? 'booked' : ''}">
           ${isBooked ? '🔒 Занято' : '✅ Свободно'}
         </div>
@@ -56,6 +73,8 @@ function renderGifts(gifts) {
         </div>
       </div>
     `;
+    
+    div.innerHTML = html;
     container.appendChild(div);
   });
 }
