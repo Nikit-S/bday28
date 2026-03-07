@@ -6,14 +6,20 @@ async function loadGifts() {
     const gifts = await res.json();
     render(gifts);
   } catch(e) {
-    document.getElementById('gifts').innerHTML = '❌ Ошибка загрузки';
-    console.error(e);
+    document.getElementById('gifts').innerHTML = '❌ Ошибка загрузки. Проверьте консоль (F12)';
+    console.error('Load error:', e);
   }
 }
 
 function render(gifts) {
   const container = document.getElementById('gifts');
   container.innerHTML = '';
+  
+  if (gifts.length === 0) {
+    container.innerHTML = '📭 Нет подарков в таблице';
+    return;
+  }
+  
   gifts.forEach(g => {
     const isBooked = String(g.booked).toUpperCase() === 'TRUE';
     const div = document.createElement('div');
@@ -31,11 +37,20 @@ function render(gifts) {
 
 async function book(name) {
   if(!confirm(`Забронировать "${name}"?`)) return;
+  
   try {
-    await fetch(API, { method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name}) });
-    alert('✅ Забронировано!');
+    // Используем fetch с no-cors для обхода CORS
+    const response = await fetch(API + '?name=' + encodeURIComponent(name), {
+      method: 'POST',
+      mode: 'no-cors'
+    });
+    
+    alert('✅ Забронировано! Обновляем страницу...');
     location.reload();
-  } catch(e) { alert('❌ Ошибка: ' + e.message); }
+  } catch(e) {
+    alert('❌ Ошибка: ' + e.message);
+    console.error('Book error:', e);
+  }
 }
 
 loadGifts();
