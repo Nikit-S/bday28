@@ -1,20 +1,231 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, sans-serif; background: #fafafa; color: #333; line-height: 1.5; padding: 20px; }
-header { text-align: center; margin-bottom: 30px; }
-h1 { font-size: 2rem; margin-bottom: 8px; }
-header p { color: #666; }
-.container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.gift { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 16px; text-align: center; transition: 0.2s; }
-.gift:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-.gift.booked { opacity: 0.7; background: #f0f0f0; }
-.gift img { max-width: 100%; height: 120px; object-fit: contain; margin-bottom: 12px; }
-.gift a { color: #1a73e8; text-decoration: none; font-weight: 500; display: inline-block; margin: 8px 0; }
-.gift a:hover { text-decoration: underline; }
-.buttons { margin-top: 12px; }
-button { border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; }
-.btn-book { background: #4CAF50; color: white; }
-.btn-book:hover { background: #45a049; }
-.btn-unbook { background: #ff9800; color: white; }
-.btn-unbook:hover { background: #f57c00; }
-.status { font-weight: 600; margin-top: 8px; }
-.booked .status { color: #d32f2f; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.header {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: #8e8e93;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.share-btn {
+  background: #1c1c1e;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.share-btn:hover {
+  background: #2c2c2e;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.gift {
+  background: #1c1c1e;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.gift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.gift-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #2c2c2e;
+  padding: 16px;
+}
+
+.gift-content {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gift-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.gift-link {
+  color: #0a84ff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+
+.gift-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.gift-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #30d158;
+  font-weight: 500;
+}
+
+.gift-status.booked {
+  color: #ff9f0a;
+}
+
+.gift-actions {
+  margin-top: auto;
+}
+
+.book-btn, .unbook-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.book-btn {
+  background: #30d158;
+  color: #000000;
+}
+
+.book-btn:active {
+  transform: scale(0.98);
+}
+
+.unbook-btn {
+  background: #ff3b30;
+  color: #ffffff;
+}
+
+.unbook-btn:active {
+  transform: scale(0.98);
+}
+
+.loading, .error {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 17px;
+}
+
+.loading {
+  color: #8e8e93;
+}
+
+.error {
+  color: #ff3b30;
+}
+
+/* Mobile - 1 column */
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .header-content h1 {
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+  
+  .share-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .gift-image {
+    aspect-ratio: 4/3;
+    padding: 12px;
+  }
+  
+  .book-btn, .unbook-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 601px) and (max-width: 900px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small desktop - 3 columns */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

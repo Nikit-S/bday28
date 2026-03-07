@@ -3,15 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎁 Подарки на День Рождения</title>
+  <title>🎁 Подарки</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>🎁 Подарки</h1>
-    <p>Выберите и забронируйте подарок</p>
+  <header class="header">
+    <div class="header-content">
+      <h1>Подарки <span id="count">0</span></h1>
+      <p class="subtitle">Выберите и забронируйте подарок</p>
+    </div>
+    <button class="share-btn" onclick="shareList()">
+      Share 📤
+    </button>
   </header>
-  <main id="gifts" class="container">Загрузка...</main>
+  
+  <main id="gifts" class="container">
+    <div class="loading">Загрузка...</div>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>

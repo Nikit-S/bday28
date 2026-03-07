@@ -1,15 +1,20 @@
 const API = 'https://script.google.com/macros/s/AKfycby6v5faSAHapgJ5p74qB3jf88PeAxSvXr5AY-Jh5gxBKYkHgtntVYb-aal4UGwm4mky/exec';
 
 async function loadGifts() {
+  const container = document.getElementById('gifts');
   try {
     const res = await fetch(API + '?t=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
     const gifts = await res.json();
     render(gifts);
+    updateCount(gifts.length);
   } catch(e) {
-    console.error('Load error:', e);
-    document.getElementById('gifts').innerHTML = '❌ Ошибка загрузки';
+    container.innerHTML = '<div class="error">❌ Ошибка загрузки</div>';
+    console.error(e);
   }
+}
+
+function updateCount(count) {
+  document.getElementById('count').textContent = count;
 }
 
 function render(gifts) {
@@ -17,28 +22,39 @@ function render(gifts) {
   container.innerHTML = '';
   
   if (!gifts || gifts.length === 0) {
-    container.innerHTML = '📭 Нет подарков в таблице';
+    container.innerHTML = '<div class="error">📭 Нет подарков</div>';
     return;
   }
   
   gifts.forEach(g => {
     const isBooked = String(g.booked).toUpperCase() === 'TRUE';
     const div = document.createElement('div');
-    div.className = `gift ${isBooked ? 'booked' : ''}`;
+    div.className = 'gift';
+    
     div.innerHTML = `
-      ${g.img ? `<img src="${g.img}" onerror="this.style.display='none'">` : ''}
-      <strong>${g.name}</strong>
-      ${g.link ? `<br><a href="${g.link}" target="_blank">🔗 Ссылка</a>` : ''}
-      <div class="status">${isBooked ? '🔒 Занято' : '✅ Свободно'}</div>
-      <div class="buttons">
-        ${!isBooked 
-          ? `<button class="btn-book" onclick="book('${g.name.replace(/'/g, "\\'")}')">Забронировать</button>` 
-          : `<button class="btn-unbook" onclick="unbook('${g.name.replace(/'/g, "\\'")}')">Разблокировать</button>`
-        }
+      <img src="${g.img || 'https://via.placeholder.com/300'}" alt="${g.name}" class="gift-image" onerror="this.src='https://via.placeholder.com/300'">
+      <div class="gift-content">
+        <div class="gift-name">${g.name}</div>
+        ${g.link ? `<a href="${g.link}" target="_blank" class="gift-link">🔗 Ссылка</a>` : ''}
+        <div class="gift-status ${isBooked ? 'booked' : ''}">
+          ${isBooked ? '🔒 Занято' : '✅ Свободно'}
+        </div>
+        <div class="gift-actions">
+          ${isBooked 
+            ? `<button class="unbook-btn" onclick="unbook('${escapeHtml(g.name)}')">Разблокировать</button>`
+            : `<button class="book-btn" onclick="book('${escapeHtml(g.name)}')">Забронировать</button>`
+          }
+        </div>
       </div>
     `;
     container.appendChild(div);
   });
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML.replace(/'/g, "&apos;").replace(/"/g, "&quot;");
 }
 
 async function book(name) {
@@ -47,15 +63,13 @@ async function book(name) {
   try {
     await fetch(API, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ name: name, action: 'book' })
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, action: 'book'})
     });
-    alert('✅ Забронировано!');
     location.reload();
   } catch(e) {
-    console.error('Book error:', e);
-    alert('⚠️ Запрос отправлен. Проверьте таблицу!');
-    location.reload();
+    alert('❌ Ошибка: ' + e.message);
   }
 }
 
@@ -65,15 +79,30 @@ async function unbook(name) {
   try {
     await fetch(API, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ name: name, action: 'unbook' })
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, action: 'unbook'})
     });
-    alert('✅ Разблокировано!');
     location.reload();
   } catch(e) {
-    console.error('Unbook error:', e);
-    alert('⚠️ Запрос отправлен. Проверьте таблицу!');
-    location.reload();
+    alert('❌ Ошибка: ' + e.message);
+  }
+}
+
+function shareList() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({
+      title: 'Подарки на ДР',
+      text: 'Выбери подарок!',
+      url: url
+    }).catch(() => {
+      navigator.clipboard.writeText(url);
+      alert('Ссылка скопирована!');
+    });
+  } else {
+    navigator.clipboard.writeText(url);
+    alert('Ссылка скопирована!');
   }
 }
 
