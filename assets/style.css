@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
   background: #ff0000;
   background-image: 
     repeating-linear-gradient(45deg, #ff0000 0px, #ff0000 20px, #ffcc00 20px, #ffcc00 40px),
@@ -49,6 +49,28 @@ body {
   50% { transform: translateY(-10px); }
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Circus Tent Background */
+.circus-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    repeating-linear-gradient(90deg, 
+      #ff0000 0px, #ff0000 50px, 
+      #ffcc00 50px, #ffcc00 100px,
+      #00ff00 100px, #00ff00 150px,
+      #00ffff 150px, #00ffff 200px);
+  opacity: 0.3;
+}
+
 /* Hero Section */
 .hero {
   background: linear-gradient(180deg, #ff0000 0%, #ff00ff 50%, #0000ff 100%);
@@ -56,7 +78,7 @@ body {
   text-align: center;
   border-bottom: 5px ridge #ffcc00;
   background-image: 
-    repeating-radial-gradient(circle at 50% 50%, transparent 0px, rgba(255,255,0,0.3) 20px),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><polygon points="30,0 60,60 0,60" fill="%23ffcc00" opacity="0.2"/></svg>'),
     linear-gradient(180deg, #ff0000 0%, #ff00ff 50%, #0000ff 100%);
 }
 
@@ -74,6 +96,7 @@ body {
   color: #ffcc00;
   text-shadow: 4px 4px 8px #000000, 0 0 20px #ff0000;
   letter-spacing: 3px;
+  transform: rotate(-2deg);
 }
 
 .hero-subtitle {
@@ -82,6 +105,7 @@ body {
   font-style: italic;
   text-shadow: 2px 2px 4px #000000;
   animation: rainbow 3s infinite;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 /* Navigation */
@@ -111,6 +135,7 @@ body {
   background: rgba(0,0,0,0.5);
   text-shadow: 1px 1px 2px #000000;
   transition: all 0.2s;
+  font-family: 'Verdana', sans-serif;
 }
 
 .nav a:hover {
@@ -140,8 +165,9 @@ body {
   border-bottom: 3px double #ffcc00;
   color: #ffcc00;
   text-shadow: 3px 3px 6px #000000;
-  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   text-align: center;
+  font-style: italic;
 }
 
 .section-desc {
@@ -149,6 +175,7 @@ body {
   margin-bottom: 24px;
   text-align: center;
   font-size: 18px;
+  font-family: 'Courier New', monospace;
 }
 
 /* Content Block */
@@ -163,6 +190,7 @@ body {
 .content-block p {
   margin-bottom: 16px;
   font-size: 16px;
+  font-family: 'Arial', sans-serif;
 }
 
 .intro-text {
@@ -172,6 +200,7 @@ body {
   margin-bottom: 24px;
   text-align: center;
   font-style: italic;
+  font-family: 'Georgia', serif;
 }
 
 /* Info Grid */
@@ -206,6 +235,7 @@ body {
   letter-spacing: 1px;
   margin-bottom: 4px;
   text-shadow: 1px 1px 2px #000000;
+  font-family: 'Impact', sans-serif;
 }
 
 .info-card p {
@@ -230,6 +260,7 @@ body {
   margin-bottom: 12px;
   color: #ffffff;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Comic Sans MS', cursive;
 }
 
 .timing-note p {
@@ -258,6 +289,8 @@ body {
   color: #ffcc00;
   text-align: center;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Georgia', serif;
+  font-style: italic;
 }
 
 .tips-list {
@@ -313,6 +346,7 @@ body {
   margin-bottom: 12px;
   color: #ffcc00;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Georgia', serif;
 }
 
 .dresscode-notice .notice-content p {
@@ -370,6 +404,7 @@ body {
   text-align: center;
   text-shadow: 3px 3px 6px #000000;
   font-family: 'Impact', sans-serif;
+  font-style: italic;
 }
 
 .gallery-subtitle {
@@ -377,6 +412,7 @@ body {
   color: #ffffff;
   margin-bottom: 20px;
   font-size: 18px;
+  font-family: 'Courier New', monospace;
 }
 
 .dresscode-gallery {
@@ -419,6 +455,7 @@ body {
   font-weight: bold;
   text-align: center;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Verdana', sans-serif;
 }
 
 .gallery-note {
@@ -455,6 +492,7 @@ body {
   margin-bottom: 8px;
   color: #ffcc00;
   text-shadow: 1px 1px 2px #000000;
+  font-family: 'Georgia', serif;
 }
 
 .resource-card p {
@@ -501,7 +539,7 @@ body {
   transform: scale(1.1);
 }
 
-/* Viking Invitation Text */
+/* Fun Invitation Text */
 .viking-invitation {
   margin-top: 32px;
   padding: 32px 24px;
@@ -520,10 +558,13 @@ body {
 }
 
 .viking-invitation h3 {
-  font-size: 26px;
+  font-size: 28px;
   color: #ffcc00;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Impact', sans-serif;
+  font-style: italic;
+  transform: rotate(-1deg);
 }
 
 .invitation-text {
@@ -531,10 +572,12 @@ body {
   line-height: 1.8;
   color: #ffffff;
   margin-bottom: 16px;
+  font-family: 'Georgia', serif;
 }
 
 .invitation-text strong {
   color: #ffff00;
+  font-family: 'Impact', sans-serif;
 }
 
 /* Dictionary Section */
@@ -550,6 +593,8 @@ body {
   text-align: center;
   justify-content: center;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Georgia', serif;
+  font-style: italic;
 }
 
 .dictionary-category:first-child {
@@ -590,6 +635,7 @@ body {
   font-weight: bold;
   color: #ffcc00;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Impact', sans-serif;
 }
 
 .pronunciation {
@@ -599,6 +645,7 @@ body {
   background: rgba(0,0,0,0.5);
   padding: 4px 8px;
   border-radius: 8px;
+  font-family: 'Courier New', monospace;
 }
 
 .word-meaning {
@@ -672,6 +719,7 @@ body {
   color: #ffcc00;
   margin-bottom: 12px;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Georgia', serif;
 }
 
 .notice-content p {
@@ -810,7 +858,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Comic Sans MS', cursive;
 }
 
 .book-btn {
@@ -859,7 +907,7 @@ body {
   background: rgba(0,0,0,0.5);
   padding: 4px 8px;
   border-radius: 4px;
-  font-family: monospace;
+  font-family: 'Courier New', monospace;
   color: #00ffff;
 }
 
@@ -869,6 +917,8 @@ body {
   margin: 24px 0 12px;
   color: #ffcc00;
   text-shadow: 2px 2px 4px #000000;
+  font-family: 'Georgia', serif;
+  font-style: italic;
 }
 
 .transport-info p {
@@ -969,6 +1019,7 @@ body {
   text-align: center;
   font-weight: bold;
   animation: rainbow 3s infinite;
+  font-family: 'Impact', sans-serif;
 }
 
 /* Footer */
@@ -980,6 +1031,8 @@ body {
   background: linear-gradient(180deg, #0000ff, #ff00ff);
   font-size: 18px;
   font-weight: bold;
+  font-family: 'Georgia', serif;
+  font-style: italic;
 }
 
 /* Loading */
