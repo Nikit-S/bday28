@@ -21,7 +21,7 @@ async function loadGifts() {
     const gifts = await res.json();
     renderGifts(gifts);
   } catch(e) {
-    container.innerHTML = '<div class="loading">❌ Ошибка загрузки подарков</div>';
+    container.innerHTML = '<div class="loading">❌ Ой, цыгане, ошибка загрузки! 💰</div>';
     console.error(e);
   }
 }
@@ -31,7 +31,7 @@ function renderGifts(gifts) {
   container.innerHTML = '';
   
   if (!gifts || gifts.length === 0) {
-    container.innerHTML = '<div class="loading">📭 Нет подарков в списке</div>';
+    container.innerHTML = '<div class="loading">📭 Цыганское золото закончилось! 💰</div>';
     return;
   }
   
@@ -86,7 +86,7 @@ function escapeHtml(text) {
 }
 
 async function book(name) {
-  if(!confirm(`Забронировать "${name}"?`)) return;
+  if(!confirm(`Забронировать "${name}"? Авлэм, цыганское золото! 💰`)) return;
   
   try {
     await fetch(API, {
@@ -95,6 +95,7 @@ async function book(name) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({name, action: 'book'})
     });
+    alert('✅ Забронировано, пэрэ мануша! 💰');
     location.reload();
   } catch(e) {
     alert('❌ Ошибка: ' + e.message);
@@ -111,6 +112,7 @@ async function unbook(name) {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({name, action: 'unbook'})
     });
+    alert('✅ Разблокировано, цыгане! 🌹');
     location.reload();
   } catch(e) {
     alert('❌ Ошибка: ' + e.message);
