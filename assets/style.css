@@ -5,13 +5,15 @@
 }
 
 body {
-  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
+  /* Papyrus - the ultimate "duрацкий" font */
+  font-family: 'Papyrus', 'Chiller', 'Jokerman', cursive, sans-serif;
   /* Gypsy Vintage Ethnic Pattern Background - tiles seamlessly */
   background: #ff6600 url('https://img.freepik.com/premium-vector/abstract-gypsy-vintage-ethnic-seamless-pattern-ornamental-tiled-floral-doodle-design_308835-1693.jpg') repeat 0 0;
   background-size: 400px 400px;
-  color: #ffff00;
+  /* White text with strong shadow for readability on busy pattern */
+  color: #ffffff;
   line-height: 1.6;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 3px 3px 6px #000000, -1px -1px 2px #000000;
 }
 
 /* Roma Theme Colors */
@@ -23,8 +25,9 @@ body {
   --accent-red: #ff0000;
   --accent-green: #00ff00;
   --accent-purple: #ff00ff;
-  --text-primary: #ffff00;
-  --text-muted: #ffffff;
+  --accent-cyan: #00ffff;
+  --text-primary: #ffffff;
+  --text-muted: #e0e0e0;
   --border-color: #00ffff;
 }
 
@@ -60,7 +63,7 @@ body {
   text-align: center;
   border-bottom: 5px ridge #ffcc00;
   background-image: 
-    url('image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><polygon points="30,0 60,60 0,60" fill="%23ffcc00" opacity="0.2"/></svg>'),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><polygon points="30,0 60,60 0,60" fill="%23ffcc00" opacity="0.2"/></svg>'),
     linear-gradient(180deg, #ff0000 0%, #ff00ff 50%, #0000ff 100%);
 }
 
@@ -173,6 +176,8 @@ body {
   margin-bottom: 16px;
   font-size: 16px;
   font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .intro-text {
@@ -183,6 +188,7 @@ body {
   text-align: center;
   font-style: italic;
   font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 /* Info Grid */
@@ -212,11 +218,11 @@ body {
 .info-card strong {
   display: block;
   font-size: 14px;
-  color: #ffff00;
+  color: #00ffff;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 4px;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 2px 2px 4px #000000;
   font-family: 'Impact', sans-serif;
 }
 
@@ -224,7 +230,7 @@ body {
   font-size: 16px;
   margin: 0;
   color: #ffffff;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 /* Timing Note */
@@ -242,7 +248,7 @@ body {
   margin-bottom: 12px;
   color: #ffffff;
   text-shadow: 2px 2px 4px #000000;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Papyrus', cursive;
 }
 
 .timing-note p {
@@ -250,10 +256,11 @@ body {
   font-size: 16px;
   margin-bottom: 8px;
   line-height: 1.6;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .timing-note strong {
-  color: #ffff00;
+  color: #00ffff;
 }
 
 /* Dress Code Section */
@@ -268,7 +275,7 @@ body {
 .dresscode-tips h3 {
   font-size: 20px;
   margin-bottom: 16px;
-  color: #ffcc00;
+  color: #00ffff;
   text-align: center;
   text-shadow: 2px 2px 4px #000000;
   font-family: 'Georgia', serif;
@@ -285,15 +292,15 @@ body {
   color: #ffffff;
   margin-bottom: 12px;
   line-height: 1.5;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .tips-list li strong {
-  color: #ffff00;
+  color: #00ffff;
 }
 
 .dresscode-note {
-  background: rgba(255, 255, 0, 0.3);
+  background: rgba(0, 255, 255, 0.3);
   padding: 16px;
   border-radius: 10px;
   border: 3px dashed #ff00ff;
@@ -303,7 +310,7 @@ body {
 }
 
 .dresscode-note strong {
-  color: #ffff00;
+  color: #00ffff;
 }
 
 /* Dress Code Notice Boxes */
@@ -326,7 +333,7 @@ body {
 .dresscode-notice .notice-content h3 {
   font-size: 20px;
   margin-bottom: 12px;
-  color: #ffcc00;
+  color: #00ffff;
   text-shadow: 2px 2px 4px #000000;
   font-family: 'Georgia', serif;
 }
@@ -340,7 +347,7 @@ body {
 }
 
 .dresscode-notice .notice-content strong {
-  color: #ffff00;
+  color: #00ffff;
 }
 
 .dresscode-notice.previous-guests {
@@ -368,7 +375,7 @@ body {
 }
 
 .creatures-list li strong {
-  color: #ffff00;
+  color: #00ffff;
 }
 
 .creatures-note {
@@ -381,7 +388,7 @@ body {
 /* Dress Code Gallery */
 .gallery-title {
   font-size: 28px;
-  color: #ffcc00;
+  color: #00ffff;
   margin: 32px 0 8px;
   text-align: center;
   text-shadow: 3px 3px 6px #000000;
@@ -431,7 +438,7 @@ body {
   left: 0;
   right: 0;
   background: linear-gradient(to top, #ff0000 0%, transparent 100%);
-  color: #ffff00;
+  color: #ffffff;
   padding: 40px 12px 12px;
   font-size: 16px;
   font-weight: bold;
@@ -472,8 +479,8 @@ body {
 .resource-card h4 {
   font-size: 18px;
   margin-bottom: 8px;
-  color: #ffcc00;
-  text-shadow: 1px 1px 2px #000000;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
   font-family: 'Georgia', serif;
 }
 
@@ -481,10 +488,11 @@ body {
   font-size: 14px;
   color: #ffffff;
   margin-bottom: 12px;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .resource-link {
-  color: #ffff00;
+  color: #00ffff;
   text-decoration: underline;
   font-size: 14px;
   font-weight: bold;
@@ -525,7 +533,7 @@ body {
 .viking-invitation {
   margin-top: 32px;
   padding: 32px 24px;
-  background: linear-gradient(135deg, rgba(255, 204, 0, 0.5) 0%, rgba(255, 0, 255, 0.5) 100%);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.3) 0%, rgba(255, 0, 255, 0.3) 100%);
   border-radius: 20px;
   border: 4px ridge #ff0000;
   text-align: center;
@@ -533,7 +541,7 @@ body {
 
 .rune-divider {
   font-size: 30px;
-  color: #ffcc00;
+  color: #00ffff;
   letter-spacing: 15px;
   margin: 16px 0;
   animation: sparkle 2s infinite;
@@ -541,7 +549,7 @@ body {
 
 .viking-invitation h3 {
   font-size: 28px;
-  color: #ffcc00;
+  color: #00ffff;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px #000000;
   font-family: 'Impact', sans-serif;
@@ -555,17 +563,18 @@ body {
   color: #ffffff;
   margin-bottom: 16px;
   font-family: 'Georgia', serif;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .invitation-text strong {
-  color: #ffff00;
+  color: #00ffff;
   font-family: 'Impact', sans-serif;
 }
 
 /* Dictionary Section */
 .dictionary-category {
   font-size: 22px;
-  color: #ffcc00;
+  color: #00ffff;
   margin: 32px 0 16px;
   padding-bottom: 8px;
   border-bottom: 3px double #00ffff;
@@ -615,7 +624,7 @@ body {
 .word {
   font-size: 24px;
   font-weight: bold;
-  color: #ffcc00;
+  color: #00ffff;
   text-shadow: 2px 2px 4px #000000;
   font-family: 'Impact', sans-serif;
 }
@@ -635,6 +644,7 @@ body {
   color: #ffffff;
   margin-bottom: 8px;
   line-height: 1.5;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .word-origin {
@@ -646,7 +656,7 @@ body {
 
 .word-example {
   font-size: 14px;
-  color: #ffff00;
+  color: #00ffff;
   margin: 0;
 }
 
@@ -657,7 +667,7 @@ body {
 }
 
 .insult-card:hover {
-  border-color: #ffff00;
+  border-color: #00ffff;
 }
 
 /* Number Cards */
@@ -674,13 +684,13 @@ body {
 }
 
 .highlight-card {
-  border-color: #ffcc00;
-  background: linear-gradient(135deg, rgba(255, 204, 0, 0.8) 0%, rgba(255, 0, 0, 0.8) 100%);
+  border-color: #00ffff;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.5) 0%, rgba(255, 0, 0, 0.8) 100%);
 }
 
 /* Gifts Notice Box */
 .gifts-notice {
-  background: linear-gradient(135deg, rgba(255, 0, 255, 0.8) 0%, rgba(255, 204, 0, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(255, 0, 255, 0.8) 0%, rgba(0, 255, 255, 0.8) 100%);
   border: 4px ridge #00ff00;
   border-radius: 20px;
   padding: 24px;
@@ -698,7 +708,7 @@ body {
 
 .notice-content h3 {
   font-size: 22px;
-  color: #ffcc00;
+  color: #00ffff;
   margin-bottom: 12px;
   text-shadow: 2px 2px 4px #000000;
   font-family: 'Georgia', serif;
@@ -709,10 +719,11 @@ body {
   color: #ffffff;
   margin-bottom: 12px;
   line-height: 1.6;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .notice-content strong {
-  color: #ffff00;
+  color: #00ffff;
 }
 
 .notice-video {
@@ -728,11 +739,11 @@ body {
   margin-top: 8px;
   padding: 12px 20px;
   background: linear-gradient(180deg, #ff0000, #ff6600);
-  color: #ffff00;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 10px;
   font-weight: bold;
-  border: 2px outset #ffcc00;
+  border: 2px outset #00ffff;
   text-shadow: 1px 1px 2px #000000;
 }
 
@@ -790,7 +801,7 @@ body {
   font-weight: bold;
   margin-bottom: 8px;
   color: #ffffff;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .gift-description {
@@ -798,10 +809,11 @@ body {
   color: #ffffff;
   margin-bottom: 10px;
   line-height: 1.4;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .gift-link {
-  color: #ffff00;
+  color: #00ffff;
   text-decoration: underline;
   font-size: 14px;
   margin-bottom: 12px;
@@ -823,12 +835,12 @@ body {
 .gift-status {
   font-size: 15px;
   margin-bottom: 12px;
-  color: #ffff00;
+  color: #00ffff;
   font-weight: bold;
 }
 
 .gift-status.booked {
-  color: #ff0000;
+  color: #ffcc00;
 }
 
 .book-btn, .unbook-btn {
@@ -840,7 +852,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Papyrus', cursive;
 }
 
 .book-btn {
@@ -855,7 +867,7 @@ body {
 
 .unbook-btn {
   background: linear-gradient(180deg, #ff0000, #cc0000);
-  color: #ffff00;
+  color: #ffffff;
 }
 
 .unbook-btn:hover {
@@ -880,7 +892,7 @@ body {
   padding: 12px;
   text-align: center;
   font-size: 14px;
-  color: #ffff00;
+  color: #ffffff;
   margin: 0;
   font-weight: bold;
 }
@@ -897,7 +909,7 @@ body {
 .transport-info h3 {
   font-size: 20px;
   margin: 24px 0 12px;
-  color: #ffcc00;
+  color: #00ffff;
   text-shadow: 2px 2px 4px #000000;
   font-family: 'Georgia', serif;
   font-style: italic;
@@ -907,14 +919,15 @@ body {
   color: #ffffff;
   font-size: 16px;
   margin-bottom: 8px;
+  text-shadow: 1px 1px 2px #000000;
 }
 
 .transport-info .important {
-  background: rgba(255, 255, 0, 0.3);
-  border-left: 4px solid #ffcc00;
+  background: rgba(0, 255, 255, 0.3);
+  border-left: 4px solid #00ffff;
   padding: 12px 16px;
   margin: 16px 0;
-  color: #ffff00;
+  color: #00ffff;
   font-weight: bold;
 }
 
@@ -923,7 +936,7 @@ body {
   margin-top: 12px;
   padding: 12px 20px;
   background: linear-gradient(180deg, #00ffff, #0000ff);
-  color: #ffff00;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 10px;
   font-weight: bold;
@@ -996,7 +1009,7 @@ body {
 
 .skol {
   font-size: 24px;
-  color: #ffcc00;
+  color: #00ffff;
   margin-top: 16px;
   text-align: center;
   font-weight: bold;
@@ -1022,7 +1035,7 @@ body {
   grid-column: 1 / -1;
   text-align: center;
   padding: 40px;
-  color: #ffff00;
+  color: #00ffff;
   font-size: 20px;
   font-weight: bold;
 }
